@@ -17,12 +17,6 @@ ShopNest is a full-stack online store built with **MongoDB, Express, React and N
 - Create, edit and delete products
 - Move orders through Paid → Shipped → Delivered, or cancel them (cancelling puts the stock back)
 
-**Engineering details worth mentioning in interviews**
-- The server recalculates every price. The client only sends product IDs and quantities, so nobody can edit a price in DevTools.
-- Stock is decremented atomically (`updateOne` with a `stock >= qty` condition). If one item in an order sells out partway through, the stock already taken is put back.
-- Passwords are hashed with bcrypt and never returned by the API (`select: false`).
-- One error handler turns Mongoose validation, cast and duplicate-key errors into clean JSON responses.
-- Role-based access (`protect` and `adminOnly` middleware) on the API, and matching route guards in React.
 
 ## Tech stack
 
